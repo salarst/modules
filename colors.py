@@ -10,7 +10,7 @@
 class colors():
     '''convert the color code  to word!'''
     end = '\033[0m'
-    color = {'green':'\033[92m','bule':'\033[94m','yellow':'\033[93m','red':'\033[91m','bold':'\033[1m','underline':'\033[4m'}
+    color = {'green':'\033[92m','blue':'\033[94m','yellow':'\033[93m','red':'\033[91m','bold':'\033[1m','underline':'\033[4m'}
     def test(self):
         word='color'
         for k,v in self.color.items():
