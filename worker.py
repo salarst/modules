@@ -1,13 +1,14 @@
 import paramiko
 import time
 import subprocess
+import colors
 class worker():
 	def __init_(self):
 		pass
 	
 	def wait_for_finish(self, stdout):
 		while not stdout.channel.exit_status_ready():
-			time.sleep(1)
+			time.sleep(0.5)
 	
 	def do_work_local(self,cmd,isReturncode=False,isReturnStdout=False,isReturnStderr=False):
 		res = {}
@@ -42,11 +43,19 @@ class worker():
 			print(color.color['red'] + '%s start failed!'%serviceName + color.end)
 	
 	
-	def ssh_handers(self,ip,port=22):
-		pkey = paramiko.RSAKey.from_private_key_file('/root/.ssh/id_rsa')
-		t = paramiko.Transport((ip, port))
-		t.connect(username='root', pkey=pkey)
+	def ssh_handers(self,ip,port=22,isKeyLogin=True,passowrd=None):
+		if isKeyLogin:
+			pkey = paramiko.RSAKey.from_private_key_file('/root/.ssh/id_rsa')
 		ssh = paramiko.SSHClient()
-		ssh._transport = t
+		try:
+			if passowrd:
+				ssh.connect(hostname=ip,port=port,username='root',pkey=pkey)
+			else:
+				ssh.connect(hostname=ip,port=port,username='root',passowrd=passowrd)
+		except paramiko.SSHException as e:
+            print(color.color['red'] + 'please check hostFile.txt to confirm the config is correct!'+color.end)
+            print(color.color['red']+'the error IP is %s,ssh exception:%s'%(ip,e) + color.end)
+            ssh.close()
+            sys.exit(1)
 		return ssh
 	
