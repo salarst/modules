@@ -1,7 +1,9 @@
-### colors:                                                                                       
- 	convert the color code to word															     
-                                                                                                
-### workers:                                                                                      
+### colors:  
+-----
+ 	 convert the color code to word
+                                                                                     
+### workers:  
+-----
  	 Pass the linux command as a parameter and return the corresponding execution result.       
  	   do_work_remote():                                                                          
  	       use paramiko to login remote server and execute the commands
