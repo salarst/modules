@@ -11,4 +11,3 @@
 >>do_work_local():                                                                          
 >>use subprocess to execute commands on local server                                      
 
-`ip a s `
