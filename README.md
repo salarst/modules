@@ -1,6 +1,6 @@
 ### colors:  
 -----
- 	 convert the color code to word
+> 	 convert the color code to word
                                                                                      
 ### workers:  
 -----
