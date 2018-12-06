@@ -2,7 +2,9 @@ import paramiko
 import time
 import subprocess
 import colors
+import glob
 class worker():
+	color = colors.colors()
 	def __init_(self):
 		pass
 	
